@@ -1,6 +1,6 @@
 # Email Extractor
 
-Welcome to the Email Extractor project! This simple web application is designed to help you learn the basics of React while providing a useful tool for extracting email addresses from pasted text. Whether you're gathering emails from a document, a webpage, or any other source, this tool makes it easy to get the information you need.
+This simple web application is designed to help you learn the basics of React while providing a useful tool for extracting email addresses from pasted text. Whether you're gathering emails from a document, a webpage, or any other source, this tool makes it easy to get the information you need.
 
 ## Features
 
@@ -16,3 +16,4 @@ Install with npm
   npm install
   npm run dev
 ```
+
