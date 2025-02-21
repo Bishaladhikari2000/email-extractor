@@ -1,0 +1,49 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    margin-bottom: 20px;
+  }
+  
+  .textpaste {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+  
+  .showextractedemail {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .email-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .email-item {
+    background-color: #e0f7fa;
+    padding: 10px;
+    border-radius: 4px;
+    flex: 1 1 calc(33.333% - 20px); /* Adjust the width and gap as needed */
+    box-sizing: border-box;
+    text-align: center;
+  }
+  

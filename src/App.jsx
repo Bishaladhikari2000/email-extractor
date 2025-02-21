@@ -34,19 +34,40 @@ function App() {
     setPastedEmails(collectEmailAddress || []);
   };
 
+  // Function to copy all extracted emails to the clipboard
+  const copyAllEmails = () => {
+    if (pastedEmails && pastedEmails.length > 0) {
+      // Join all emails into a single string separated by commas
+      const emailsString = pastedEmails.join(", ");
+
+      // Use the Clipboard API to copy the emails to the clipboard
+      navigator.clipboard
+        .writeText(emailsString)
+        .then(() => {
+          alert("All emails copied to clipboard!");
+        })
+        .catch((err) => {
+          console.error("Failed to copy emails: ", err);
+        });
+    }
+  };
+
   // Render the UI components
   return (
-    <>
+    <div className="app-container">
       <div className="header">
         <h1>Email Extractor</h1> {/* Header for the application */}
       </div>
-      <div className="textpaste" style={{ color: "white" }}>
+      <div className="textpaste">
         <TextField
           id="outlined-basic" // Unique identifier for the TextField
           label="Paste Your Text Here" // Label for the TextField
           variant="outlined" // Style variant for the TextField
           onPaste={handlePaste} // Attach the handlePaste function to the onPaste event
           type="text" // Input type
+          fullWidth // Make the TextField full width
+          multiline // Allow multiple lines of text
+          rows={4} // Set the number of rows for the TextField
         />
       </div>
       <Button
@@ -57,16 +78,29 @@ function App() {
       >
         Extract {/* Button text */}
       </Button>
-      <div className="showextractedemail">
-        <ul>
-          {" "}
-          {/* Unordered list to display extracted email addresses */}
-          {pastedEmails.map((email, index) => (
-            <li key={index}>{email}</li> // Render each email inside a list item
-          ))}
-        </ul>
-      </div>
-    </>
+      {pastedEmails.length > 0 && (
+        <>
+          <Button
+            variant="contained" // Style variant for the Button
+            disableElevation // Disable elevation effect on the button
+            style={{ marginTop: "20px", marginLeft: "10px" }} // Inline style for margin
+            onClick={copyAllEmails} // Attach the copyAllEmails function to the onClick event
+          >
+            Copy All {/* Button text */}
+          </Button>
+          <div className="showextractedemail">
+            <ul className="email-list">
+              {/* Unordered list to display extracted email addresses */}
+              {pastedEmails.map((email, index) => (
+                <li key={index} className="email-item">
+                  {email}
+                </li> // Render each email inside a list item
+              ))}
+            </ul>
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 
