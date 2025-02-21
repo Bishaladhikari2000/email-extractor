@@ -47,3 +47,10 @@
     text-align: center;
   }
   
+  .no-emails-found {
+    margin-top: 20px;
+    color: #ff5722;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  

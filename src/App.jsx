@@ -13,6 +13,9 @@ function App() {
   // State variable to hold the list of extracted email addresses
   const [pastedEmails, setPastedEmails] = useState([]);
 
+  // State variable to track whether extraction has been attempted
+  const [extractionAttempted, setExtractionAttempted] = useState(false);
+
   // Function to handle the paste event
   const handlePaste = (event) => {
     // Get the text that was pasted from the clipboard
@@ -32,6 +35,9 @@ function App() {
     // Update the pastedEmails state with the extracted email addresses
     // If no emails are found, set it to an empty array
     setPastedEmails(collectEmailAddress || []);
+
+    // Set extractionAttempted to true
+    setExtractionAttempted(true);
   };
 
   // Function to copy all extracted emails to the clipboard
@@ -78,7 +84,7 @@ function App() {
       >
         Extract {/* Button text */}
       </Button>
-      {pastedEmails.length > 0 && (
+      {extractionAttempted && pastedEmails.length > 0 ? (
         <>
           <Button
             variant="contained" // Style variant for the Button
@@ -99,6 +105,10 @@ function App() {
             </ul>
           </div>
         </>
+      ) : (
+        extractionAttempted && (
+          <div className="no-emails-found">No email addresses found.</div>
+        )
       )}
     </div>
   );
